@@ -2,7 +2,7 @@ from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(account_card: str) -> str:
-    """ Обрабатывает информацию о карте или счету и выводит маскировку """
+    """Обрабатывает информацию о карте или счету и выводит маскировку"""
 
     account_card_list = account_card.split()
     account_type_list = []
@@ -23,7 +23,7 @@ def mask_account_card(account_card: str) -> str:
 
 
 def get_date(date_time: str) -> str:
-    """ Изменение формата даты """
+    """Изменение формата даты"""
     date_time_list = date_time.split("T")
     date_list = date_time_list[0].split("-")
 
