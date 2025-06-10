@@ -1,4 +1,4 @@
-from src.masks import get_mask_card_number, get_mask_account
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(account_card: str) -> str:
@@ -23,4 +23,10 @@ def mask_account_card(account_card: str) -> str:
 
 
 def get_date(date_time: str) -> str:
-    pass
+    """ Изменение формата даты """
+    date_time_list = date_time.split("T")
+    date_list = date_time_list[0].split("-")
+
+    date_list.reverse()
+
+    return ".".join(date_list)
