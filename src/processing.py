@@ -1,8 +1,8 @@
 from datetime import datetime
-from typing import List
+from typing import List, Dict, Any
 
 
-def filter_by_state(list_of_dicts: List, state: str = "EXECUTED") -> List:
+def filter_by_state(list_of_dicts: List[Dict[str, Any]], state: str = "EXECUTED") -> List[Dict[str, Any]]:
     """Выборка словарей из списка словарей с заданным статусом"""
     filter_list = []
     for dict_item in list_of_dicts:
@@ -12,7 +12,7 @@ def filter_by_state(list_of_dicts: List, state: str = "EXECUTED") -> List:
     return filter_list
 
 
-def sort_by_date(list_of_dicts: List, reverse: bool = True) -> List:
+def sort_by_date(list_of_dicts: List[Dict[str, Any]], reverse: bool = True) -> List[Dict[str, Any]]:
     """Сортировка полученного списка по дате
     по умолчанию - сортировка по убыванию
     """
