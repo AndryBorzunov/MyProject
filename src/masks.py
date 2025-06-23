@@ -33,7 +33,7 @@ def get_mask_account(account_number: int) -> str:
         raise ValueError("Некорректный ввод")
 
     account_number_str = str(account_number)
-    if len(account_number_str) != 16:
+    if len(account_number_str) > 20 or len(account_number_str) < 8:
         raise ValueError("Некорректный ввод")
 
     mask_account_number = "**" + account_number_str[-4:]
