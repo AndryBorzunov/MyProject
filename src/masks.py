@@ -1,6 +1,11 @@
 def get_mask_card_number(card_number: int) -> str:
     """Маскировка номера банковской карты"""
-    card_number_str = str(card_number)
+    if isinstance(card_number, int) == False:
+        return "Неверный тип входных данных"
+
+    card_number_str = str(abs(card_number))
+    if len(card_number_str) != 16:
+        raise ValueError("Некорректный ввод")
 
     mask_card_number = ""
     index = 0
