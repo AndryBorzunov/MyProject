@@ -1,6 +1,14 @@
 def get_mask_card_number(card_number: int) -> str:
     """Маскировка номера банковской карты"""
-    card_number_str = str(card_number)
+    if not isinstance(card_number, int):
+        return "Неверный тип входных данных"
+
+    if card_number < 0:
+        raise ValueError("Некорректный ввод")
+
+    card_number_str = str(abs(card_number))
+    if len(card_number_str) != 16:
+        raise ValueError("Некорректный ввод")
 
     mask_card_number = ""
     index = 0
@@ -18,7 +26,15 @@ def get_mask_card_number(card_number: int) -> str:
 
 def get_mask_account(account_number: int) -> str:
     """Маскировка номера банковского счета"""
+    if not isinstance(account_number, int):
+        return "Неверный тип входных данных"
+
+    if account_number < 0:
+        raise ValueError("Некорректный ввод")
+
     account_number_str = str(account_number)
+    if len(account_number_str) > 20 or len(account_number_str) < 8:
+        raise ValueError("Некорректный ввод")
 
     mask_account_number = "**" + account_number_str[-4:]
 
