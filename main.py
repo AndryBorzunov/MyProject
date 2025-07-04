@@ -1,7 +1,7 @@
 from src.masks import get_mask_account, get_mask_card_number
 from src.processing import filter_by_state, sort_by_date
 from src.widget import get_date, mask_account_card
-from src.generators import filter_by_currency
+from src.generators import filter_by_currency, transaction_descriptions
 
 if __name__ == "__main__":
 
@@ -106,7 +106,12 @@ if __name__ == "__main__":
         }
     ]
 
-    print("\n")
+    print("1.\n")
     usd_transactions = filter_by_currency(transactions, "USD")
     for _ in range(2):
         print(next(usd_transactions))
+
+    print("2.\n")
+    descriptions = transaction_descriptions(transactions)
+    for _ in range(5):
+        print(next(descriptions))
