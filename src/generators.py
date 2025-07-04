@@ -5,10 +5,24 @@ def filter_by_currency(transactions: List[Dict[str, Any]], currency: str) -> ite
     """
     Генератор транзакций, отфильтрованных по валюте операции
     """
+    if len(transactions) == 0:
+        raise ValueError("Нет данных")
 
     for transaction in transactions:
+        if "operationAmount" not in transaction:
+            raise ValueError("В словаре отсутствует ключ 'operationAmount'")
+
+        if "currency" not in transaction["operationAmount"]:
+            raise ValueError("В словаре отсутствует ключ 'currency")
+
+        if "code" not in transaction["operationAmount"]["currency"]:
+            raise ValueError("В словаре отсутствует ключ 'code")
+
         if transaction["operationAmount"]["currency"]["code"] == currency:
             yield transaction
+
+    return []
+    #raise StopIteration("Транзакции в заданной валюте отсутствуют")
 
 
 def transaction_descriptions(transactions) -> iter:
