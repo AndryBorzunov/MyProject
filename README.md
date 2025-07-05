@@ -11,4 +11,4 @@
 ### Тестирование модулей
 - Для создания тестовых модулей использовался framework pytest
 
-[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/homework_10_2/htmlcov/index.html)
+[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/homework_11_1/htmlcov/index.html)
