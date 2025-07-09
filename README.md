@@ -11,4 +11,10 @@
 ### Тестирование модулей
 - Для создания тестовых модулей использовался framework pytest
 
-[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/homework_10_2/htmlcov/index.html)
+### generators.py (11.1)
+- Использование генераторов
+- Фильтрация транзакций по валюте
+- Вывод описаний транзакций
+- Генератор номеров банковских карт
+
+[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/homework_11_1/htmlcov/index.html)
