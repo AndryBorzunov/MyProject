@@ -1,3 +1,5 @@
+from typing import Any
+
 from src.decorators import log
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 from src.masks import get_mask_account, get_mask_card_number
@@ -92,8 +94,8 @@ if __name__ == "__main__":
         print(card_number)
 
     # Домашнее задание 11.2
-    @log()
-    def my_function(x: float, y: float) -> float:
+    @log("mylog.txt")
+    def my_function(x: float, y: float) -> Any:
         return x / y
 
-    my_function(6, 2)
+    my_function(6, 4)
