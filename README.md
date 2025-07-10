@@ -17,4 +17,9 @@
 - Вывод описаний транзакций
 - Генератор номеров банковских карт
 
-[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/homework_11_1/htmlcov/index.html)
+### decorators.py (11.2)
+- Реализован декоратор Log, для записей результата выполнения
+функции. Если в качестве параметра передано имя файла, то записи
+ведутся в этот файл. Если параметр пустой, логи пишутся в консоль
+
+[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/homework_11_2/htmlcov/index.html)
