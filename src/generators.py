@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Generator
+from typing import Any, Dict, Generator, List
 
 
 def filter_by_currency(transactions: List[Dict[str, Any]], currency: str) -> Generator[Any | None, Any, None]:
