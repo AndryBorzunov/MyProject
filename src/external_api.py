@@ -1,0 +1,30 @@
+import os
+import requests
+from dotenv import load_dotenv
+from typing import Any, Dict
+
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
+
+def get_amount_rub(transaction: Dict[str, Any]) -> float:
+    """
+        Принимает на вход транзакцию и возвращает сумму транзакции (amount) в рублях.
+        Если сумма транзакции в другой валюте, обращается к интернет-сервису для конвертации
+    """
+
+    amount = transaction["operationAmount"]["amount"]
+    currency_code = transaction["operationAmount"]["currency"]["code"]
+
+    if currency_code == "RUB":
+        return float(amount)
+
+    else:
+        url = "https://api.apilayer.com/exchangerates_data/convert"
+        params = {"to": "RUB", "from": currency_code, "amount": amount}
+        headers = {"apikey": API_KEY}
+        response = requests.get(url, params, headers=headers)
+        if (response.status_code == 200):
+            data = response.json()
+            return float(data["result"])
+        else:
+            raise response.raise_for_status()
