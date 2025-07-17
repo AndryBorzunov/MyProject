@@ -28,4 +28,4 @@
 ### external_api.py
 - Использование интернет-сервисов для получения данных
 
-[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/homework_11_2/htmlcov/index.html)
+[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/homework_12_1/htmlcov/index.html)
