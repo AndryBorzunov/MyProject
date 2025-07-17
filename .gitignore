@@ -195,3 +195,7 @@ cython_debug/
 .cursorindexingignore
 
 .env
+
+logs
+
+mylog.txt

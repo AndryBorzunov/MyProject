@@ -18,3 +18,6 @@ INFO: my_function ok: Inputs: 6, 4. Outputs: 1.5
 INFO: my_function ok: Inputs: 6, 4. Outputs: 1.5
 INFO: my_function ok: Inputs: 6, 4. Outputs: 1.5
 INFO: my_function ok: Inputs: 6, 4. Outputs: 1.5
+INFO: my_function ok: Inputs: 6, 4. Outputs: 1.5
+INFO: my_function ok: Inputs: 6, 4. Outputs: 1.5
+INFO: my_function ok: Inputs: 6, 4. Outputs: 1.5
