@@ -22,4 +22,10 @@
 функции. Если в качестве параметра передано имя файла, то записи
 ведутся в этот файл. Если параметр пустой, логи пишутся в консоль
 
-[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/homework_11_2/htmlcov/index.html)
+### utils.py (12.1)
+- Считывание данных из файла в json формате
+
+### external_api.py
+- Использование интернет-сервисов для получения данных
+
+[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/Homework_12_1/htmlcov/index.html)

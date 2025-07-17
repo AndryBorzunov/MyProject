@@ -5,6 +5,8 @@ from src.generators import card_number_generator, filter_by_currency, transactio
 from src.masks import get_mask_account, get_mask_card_number
 from src.processing import filter_by_state, sort_by_date
 from src.widget import get_date, mask_account_card
+from src.utils import load_transactions
+from src.external_api import get_amount_rub
 
 if __name__ == "__main__":
 
@@ -99,3 +101,16 @@ if __name__ == "__main__":
         return x / y
 
     my_function(6, 4)
+
+    # Домашнее задание 12.1
+    print("\n")
+    print("Домашнее задание 12.1\n")
+    transactions = load_transactions("data/operations.json")
+    if len(transactions) > 0:
+        print(transactions[4])
+
+    try:
+        amount = get_amount_rub(transactions[4])
+        print(f"amount = {amount} руб")
+    except Exception as e:
+        print(e)
