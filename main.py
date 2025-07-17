@@ -5,7 +5,7 @@ from src.generators import card_number_generator, filter_by_currency, transactio
 from src.masks import get_mask_account, get_mask_card_number
 from src.processing import filter_by_state, sort_by_date
 from src.widget import get_date, mask_account_card
-from src.utils import load_Transactions
+from src.utils import load_transactions
 from src.external_api import get_amount_rub
 
 if __name__ == "__main__":
@@ -105,7 +105,7 @@ if __name__ == "__main__":
     # Домашнее задание 12.1
     print("\n")
     print("Домашнее задание 12.1\n")
-    transactions = load_Transactions("data/operations.json")
+    transactions = load_transactions("data/operations.json")
     if len(transactions) > 0:
         print(transactions[4])
 

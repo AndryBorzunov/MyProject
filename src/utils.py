@@ -4,11 +4,11 @@ import  os
 from typing import Any, Dict, List
 
 
-def load_Transactions(file_name: str) -> List[Dict[str, Any]]:
+def load_transactions(file_name: str) -> List[Dict[str, Any]]:
     """ Считывание транзакций, записанных в json формате из файла"""
 
-    if not os.path.isfile(file_name):
-        return []
+    #if not os.path.isfile(file_name):
+    #    return []
 
     try:
         with open(file_name, encoding="utf-8") as file:
