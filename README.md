@@ -28,4 +28,6 @@
 ### external_api.py
 - Использование интернет-сервисов для получения данных
 
-[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/Homework_12_1/htmlcov/index.html)
+### Логирование выполнения модулей utils и masks с помощью библиотеки logging (12.2)
+
+[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/Homework_12_2/htmlcov/index.html)
