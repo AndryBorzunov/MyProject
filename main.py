@@ -7,6 +7,7 @@ from src.processing import filter_by_state, sort_by_date
 from src.widget import get_date, mask_account_card
 from src.utils import load_transactions
 from src.external_api import get_amount_rub
+from  src.data_loader import load_data_csv, load_data_excel
 
 if __name__ == "__main__":
 
@@ -114,3 +115,11 @@ if __name__ == "__main__":
         print(f"amount = {amount} руб")
     except Exception as e:
         print(e)
+
+    # Домашнее задание 13.1
+    print("\n")
+    print("Домашнее задание 13.1\n")
+    print(load_data_csv("data"))
+
+    print("\n")
+    print(load_data_excel("data"))
