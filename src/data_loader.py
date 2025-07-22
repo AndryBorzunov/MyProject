@@ -1,12 +1,10 @@
-import json
+from typing import Any, Dict, Hashable, List
+
 import pandas as pd
-from typing import Any, Dict, List
-
-from tests.test_generators import transactions
 
 
-def load_data_csv(path_csv: str) -> List[Dict[str, Any]]:
-    """ Функция загружает таблицу данных из файла .csv """
+def load_data_csv(path_csv: str) -> List[Dict[Hashable, Any]]:
+    """Функция загружает таблицу данных из файла .csv"""
 
     try:
         transactions_csv = pd.read_csv(path_csv + "/" + "transactions.csv", sep=";")
@@ -19,13 +17,9 @@ def load_data_csv(path_csv: str) -> List[Dict[str, Any]]:
         print(f"Файл {file} не найден")
         return []
 
-    except Exception as ex:
-        print(ex)
-        return []
 
-
-def load_data_excel(path_excel: str) -> List[Dict[str, Any]]:
-    """ Функция загружает таблицу из файла excel (.xlsx) """
+def load_data_excel(path_excel: str) -> List[Dict[Hashable, Any]]:
+    """Функция загружает таблицу из файла excel (.xlsx)"""
 
     try:
         transactions_xls = pd.read_excel(path_excel + "/" + "transactions_excel.xlsx")
@@ -36,8 +30,4 @@ def load_data_excel(path_excel: str) -> List[Dict[str, Any]]:
 
     except FileNotFoundError as file:
         print(f"Файл {file} не найден")
-        return []
-
-    except Exception as ex:
-        print(ex)
         return []

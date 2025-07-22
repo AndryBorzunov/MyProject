@@ -1,13 +1,13 @@
 from typing import Any
 
+from src.data_loader import load_data_csv, load_data_excel
 from src.decorators import log
+from src.external_api import get_amount_rub
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 from src.masks import get_mask_account, get_mask_card_number
 from src.processing import filter_by_state, sort_by_date
-from src.widget import get_date, mask_account_card
 from src.utils import load_transactions
-from src.external_api import get_amount_rub
-from  src.data_loader import load_data_csv, load_data_excel
+from src.widget import get_date, mask_account_card
 
 if __name__ == "__main__":
 
