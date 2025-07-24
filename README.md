@@ -30,4 +30,8 @@
 
 ### Логирование выполнения модулей utils и masks с помощью библиотеки logging (12.2)
 
-[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/Homework_12_2/htmlcov/index.html)
+### data_loader.py (13.1)
+- Загрузка данных из файлов .csv и excel (.xlsx) 
+- Использование библиотеки pandas
+
+[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/Homework_13_1/htmlcov/index.html)
