@@ -3,14 +3,18 @@ from typing import Any, Dict, Hashable, List
 import pandas as pd
 
 
-def load_data_csv(path_csv: str) -> List[Dict[Hashable, Any]]:
+def load_data_csv(path_csv: str, is_head: bool=True) -> List[Dict[Hashable, Any]]:
     """Функция загружает таблицу данных из файла .csv"""
 
     try:
         transactions_csv = pd.read_csv(path_csv + "/" + "transactions.csv", sep=";")
         print(transactions_csv.shape)
-        head_csv = transactions_csv.head()
-        transactions_json = head_csv.to_dict(orient="records")
+
+        if is_head:
+            head_csv = transactions_csv.head()
+            transactions_json = head_csv.to_dict(orient="records")
+        else:
+            transactions_json = transactions_csv.to_dict(orient="records")
         return transactions_json
 
     except FileNotFoundError as file:

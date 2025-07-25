@@ -8,6 +8,7 @@ from src.masks import get_mask_account, get_mask_card_number
 from src.processing import filter_by_state, sort_by_date
 from src.utils import load_transactions
 from src.widget import get_date, mask_account_card
+from src.process_bank import process_bank_search
 
 if __name__ == "__main__":
 
@@ -111,7 +112,7 @@ if __name__ == "__main__":
         print(transactions[4])
 
     try:
-        amount = get_amount_rub(transactions[4])
+        amount = get_amount_rub(transactions[0])
         print(f"amount = {amount} руб")
     except Exception as e:
         print(e)
@@ -123,3 +124,10 @@ if __name__ == "__main__":
 
     print("\n")
     print(load_data_excel("data"))
+
+    transactions = load_data_csv("data", False)
+
+    # Домашнее задание 13.2
+    print("\n")
+    print("Домашнее задание 13.2\n")
+    print(process_bank_search(transactions, "перевод на карт "))
