@@ -10,7 +10,8 @@ def filter_by_state(list_of_dicts: List[Dict[str, Any]], state: str = "EXECUTED"
     filter_list = []
     for dict_item in list_of_dicts:
         if "state" not in dict_item:
-            raise ValueError("В словаре отсутствует ключ 'state'")
+            # raise ValueError("В словаре отсутствует ключ 'state'")
+            continue
 
         if dict_item["state"] == state:
             filter_list.append(dict_item)
@@ -25,4 +26,14 @@ def sort_by_date(list_of_dicts: List[Dict[str, Any]], reverse: bool = True) -> L
     if len(list_of_dicts) == 0:
         raise ValueError("Нет данных")
 
-    return sorted(list_of_dicts, key=lambda x: datetime.strptime(x["date"], "%Y-%m-%dT%H:%M:%S.%f"), reverse=reverse)
+    try:
+        return sorted(
+            list_of_dicts, key=lambda x: datetime.strptime(x["date"], "%Y-%m-%dT%H:%M:%S.%f"), reverse=reverse
+        )
+    except ValueError:
+        try:
+            return sorted(
+                list_of_dicts, key=lambda x: datetime.strptime(x["date"], "%Y-%m-%dT%H:%M:%SZ"), reverse=reverse
+            )
+        except ValueError:
+            raise ValueError("Неверный формат даты")

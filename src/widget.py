@@ -5,6 +5,7 @@ def mask_account_card(account_card: str) -> str:
     """Обрабатывает информацию о карте или счету и выводит маскировку"""
 
     account_card_list = account_card.split()
+
     if len(account_card_list) < 2:
         raise ValueError("Некорректный ввод")
 

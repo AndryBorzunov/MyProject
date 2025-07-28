@@ -1,17 +1,12 @@
-from typing import Any
-
-from src.data_loader import load_data_csv, load_data_excel
-from src.decorators import log
-from src.external_api import get_amount_rub
-from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
-from src.masks import get_mask_account, get_mask_card_number
+from src.data_loader import get_fild_values_unique, load_data_csv, load_data_excel
+from src.generators import filter_by_currency
+from src.process_bank import process_bank_search
 from src.processing import filter_by_state, sort_by_date
 from src.utils import load_transactions
 from src.widget import get_date, mask_account_card
-from src.process_bank import process_bank_search
 
 if __name__ == "__main__":
-
+    """
     # Домашнее задание 9.1
     print(get_mask_card_number(7000792289606361))
     print(get_mask_account(7365410840135874305))
@@ -130,4 +125,108 @@ if __name__ == "__main__":
     # Домашнее задание 13.2
     print("\n")
     print("Домашнее задание 13.2\n")
-    print(process_bank_search(transactions, "перевод на карт "))
+    print(process_bank_search(transactions, "перевод на счет "))
+
+    print("\n")
+    name_operations_list = get_descriptions_unique(transactions)
+    print(name_operations_list)
+
+    print("\n")
+    print(process_bank_operations(transactions, name_operations_list))
+    """
+
+    # Выбор источника данных
+    print("\n")
+    print("Программа: Привет! Добро пожаловать в программу работы с банковскими транзакциями\n")
+    print("Выберите необходимый пункт меню:")
+    print("1. Получить информацию о транзакциях из JSON-файла")
+    print("2. Получить информацию о транзакциях из CSV-файла")
+    print("3. Получить информацию о транзакциях из XLSX-файла\n")
+    menu = input("Пользователь: ")
+    data_name = {"1": "JSON", "2": "CSV", "3": "XLSX"}
+    transactions = []
+    if menu in data_name:
+        print(f"Для обработки выбран {data_name[menu]}-файл\n")
+        if menu == "1":
+            transactions = load_transactions("data/operations.json")
+        if menu == "2":
+            transactions = load_data_csv("data", False)
+        if menu == "3":
+            transactions = load_data_excel("data", False)
+    else:
+        print("В меню нет такого пункта")
+        exit(0)
+
+    # Фильтрация операций по статусу
+    print("Программа: Введите статус, по которому необходимо выполнить фильтрацию.")
+    states = get_fild_values_unique(transactions, "state")
+    print(f"Доступные для фильтровки статусы: {states}\n")
+    state = input("Пользователь: ")
+    state = state.upper()
+
+    if state not in states:
+        print(f"Программа: Статус операции {state} недоступен)")
+
+    else:
+        transactions = filter_by_state(transactions, state)
+
+    # Сортировка по дате
+    print("Программа: Отсортировать операции по дате? Да/Нет\n")
+    input_user = input("Пользователь: ")
+    input_user = input_user.upper()
+    if input_user == "ДА":
+        print("Программа: Отсортировать по возрастанию или по убыванию?\n")
+        input_user = input("Пользователь: ")
+        input_user = input_user.upper()
+        if input_user in "ПО ВОЗРАСТАНИЮ":
+            transactions = sort_by_date(transactions, False)
+        else:
+            transactions = sort_by_date(transactions)
+
+    # Выборка только рублевых транзакций
+    print("Программа: Выводить только рублевые транзакции? Да/Нет\n")
+    input_user = input("Пользователь: ")
+    input_user = input_user.upper()
+    # transactions_currency_filter = []
+    if input_user == "ДА":
+        transactions = filter_by_currency(transactions, "RUB")
+
+    # Фильтрация по слову в описании
+    print("Программа: Отфильтровать список транзакций по определенному слову в описании? Да/Нет\n")
+    input_user = input("Пользователь: ")
+    input_user = input_user.upper()
+    if input_user == "ДА":
+        print("Программа: Введите слово:\n")
+        input_user = input("Пользователь: ")
+        transactions = process_bank_search(transactions, input_user)
+
+    # Вывод результата запроса
+    print("Программа: Распечатываю итоговый список транзакций...\n")
+    count = 0
+    for item in transactions:
+        dt = get_date(item["date"])
+        print(f"{dt} {item['description']}")
+
+        mask_account_to = mask_account_card(item["to"])
+        if "from" in item:
+            if type(item["from"]) is str:
+                mask_account_from = mask_account_card(item["from"])
+                print(f"{mask_account_from} -> {mask_account_to}")
+            else:
+                print(f"{mask_account_to}")
+        else:
+            print(f"{mask_account_to}")
+
+        if "amount" in item:
+            print(f"Сумма: {item['amount']} {item['currency_code']}\n")
+        else:
+            print(f"Сумма: {item['operationAmount']['amount']} {item['operationAmount']['currency']['name']}\n")
+
+        count += 1
+
+    if count > 0:
+        print("Программа:")
+        print(f"Всего банковских операций в выборке: {count}")
+
+    else:
+        print("Программа: Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
