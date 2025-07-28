@@ -36,7 +36,7 @@ def process_bank_search(data: list[dict], search: str) -> list[dict]:
     return search_datas
 
 
-def process_bank_operations(data: list[dict], categories: list) -> Dict[Any, int]:
+def process_bank_operations(data: list[dict]) -> Dict[Any, int]:
     """
     Функция для выборки данных о количестве операций в каждой категории
     """

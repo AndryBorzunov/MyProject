@@ -54,6 +54,14 @@ def test_load_data_csv(mock_csv_reader, data_output):
     mock_csv_reader.assert_called_once_with("path_test/transactions.csv", sep=";")
 
 
+@patch("pandas.read_csv")
+def test_load_data_csv_head(mock_csv_reader, data_output):
+    mock_file = mock_csv_reader.return_value
+    mock_file.to_dict.return_value = data_output
+    assert load_data_csv("path_test", False) == data_output
+    mock_csv_reader.assert_called_once_with("path_test/transactions.csv", sep=";")
+
+
 def test_load_data_csv_error():
     assert load_data_csv("path_test") == []
 
@@ -63,6 +71,14 @@ def test_load_data_excel(mock_excel_reader, data_output):
     mock_file = mock_excel_reader.return_value.head.return_value
     mock_file.to_dict.return_value = data_output
     assert load_data_excel("path_test") == data_output
+    mock_excel_reader.assert_called_once_with("path_test/transactions_excel.xlsx")
+
+
+@patch("pandas.read_excel")
+def test_load_data_excel_head(mock_excel_reader, data_output):
+    mock_file = mock_excel_reader.return_value
+    mock_file.to_dict.return_value = data_output
+    assert load_data_excel("path_test", False) == data_output
     mock_excel_reader.assert_called_once_with("path_test/transactions_excel.xlsx")
 
 
