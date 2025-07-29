@@ -158,30 +158,43 @@ if __name__ == "__main__":
         exit(0)
 
     # Фильтрация операций по статусу
-    print("Программа: Введите статус, по которому необходимо выполнить фильтрацию.")
-    states = get_fild_values_unique(transactions, "state")
-    print(f"Доступные для фильтровки статусы: {states}\n")
-    state = input("Пользователь: ")
-    state = state.upper()
+    while True:
+        print("Программа: Введите статус, по которому необходимо выполнить фильтрацию.")
+        states = get_fild_values_unique(transactions, "state")
+        print(f"Доступные для фильтровки статусы: {states}\n")
+        try:
+            state = input("Пользователь: ")
+            state = state.upper()
+        except Exception as ex:
+            continue
 
-    if state not in states:
-        print(f"Программа: Статус операции {state} недоступен)")
+        if state not in states:
+            print(f"Программа: Статус операции {state} недоступен")
 
-    else:
-        transactions = filter_by_state(transactions, state)
+        else:
+            transactions = filter_by_state(transactions, state)
+            break
 
     # Сортировка по дате
-    print("Программа: Отсортировать операции по дате? Да/Нет\n")
-    input_user = input("Пользователь: ")
-    input_user = input_user.upper()
-    if input_user == "ДА":
-        print("Программа: Отсортировать по возрастанию или по убыванию?\n")
-        input_user = input("Пользователь: ")
-        input_user = input_user.upper()
-        if input_user in "ПО ВОЗРАСТАНИЮ":
-            transactions = sort_by_date(transactions, False)
-        else:
-            transactions = sort_by_date(transactions)
+    while True:
+        print("Программа: Отсортировать операции по дате? Да/Нет\n")
+        try:
+            input_user = input("Пользователь: ")
+            input_user = input_user.upper()
+        except Exception as ex:
+            continue
+        if input_user == "ДА":
+            print("Программа: Отсортировать по возрастанию или по убыванию?\n")
+            try:
+                input_user = input("Пользователь: ")
+                input_user = input_user.upper()
+            except Exception as e:
+                continue
+            if input_user in "ПО ВОЗРАСТАНИЮ":
+                transactions = sort_by_date(transactions, False)
+            else:
+                transactions = sort_by_date(transactions)
+        break
 
     # Выборка только рублевых транзакций
     print("Программа: Выводить только рублевые транзакции? Да/Нет\n")
