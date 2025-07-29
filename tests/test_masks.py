@@ -32,7 +32,7 @@ def test_get_mask_card_number(card_numbers, index, expected):
 
 def test_get_mask_card_number_invalid():
     with pytest.raises(ValueError):
-        get_mask_card_number(12)
+        get_mask_card_number(9787797999797979797979995443)
 
 
 def test_get_mask_card_number_invalid2():
@@ -55,7 +55,7 @@ def test_get_mask_account(card_numbers, index, expected):
 
 def test_get_mask_account_invalid():
     with pytest.raises(ValueError):
-        get_mask_account(12)
+        get_mask_account(545848484455555554448887777)
 
 
 def test_get_mask_account_invalid2():

@@ -19,7 +19,8 @@ def get_mask_card_number(card_number: int) -> str:
         raise ValueError("Некорректный ввод")
 
     card_number_str = str(abs(card_number))
-    if len(card_number_str) != 16:
+    card_number_str = card_number_str.zfill(16)
+    if len(card_number_str) > 16:
         logger.error("Некорректный ввод")
         raise ValueError("Некорректный ввод")
 

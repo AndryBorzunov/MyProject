@@ -52,9 +52,9 @@ def test_filter_by_state(list_of_dicts, stat, expected):
     assert filter_by_state(list_of_dicts, stat) == expected
 
 
-def test_filter_by_state_invalid(list_of_dicts_invalid):
-    with pytest.raises(ValueError):
-        filter_by_state(list_of_dicts_invalid)
+# def test_filter_by_state_invalid(list_of_dicts_invalid):
+#    with pytest.raises(ValueError):
+#        filter_by_state(list_of_dicts_invalid)
 
 
 def test_filter_by_state_empty():

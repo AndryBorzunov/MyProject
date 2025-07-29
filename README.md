@@ -4,7 +4,7 @@
 ### masks.py
 - функции маскировки номера банковской карты и номера счета (9.1)
 ### widget.py
-- обработчик инормации о банковских карте и счете (9.2)
+- обработчик информации о банковских карте и счете (9.2)
 ### processing.py
 - фильтрация и сортировка списка словарей (10.1)
 
@@ -34,4 +34,11 @@
 - Загрузка данных из файлов .csv и excel (.xlsx) 
 - Использование библиотеки pandas
 
-[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/Homework_13_1/htmlcov/index.html)
+### process_bank.py (13.2)
+- Поиск банковских операций у которых в описании есть заданная строка
+- Выборка данных о количестве операций в каждой категории
+
+### Реализация запроса данных о банковских транзакциях в диалоговом режиме
+- main.py
+
+[Результаты тестирования](https://htmlpreview.github.io/?https://github.com/AndryBorzunov/MyProject/blob/feature/Homework_13_2/htmlcov/index.html)

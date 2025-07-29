@@ -8,17 +8,24 @@ def filter_by_currency(transactions: List[Dict[str, Any]], currency: str) -> Gen
         raise ValueError("Нет данных")
 
     for transaction in transactions:
-        if "operationAmount" not in transaction:
+        if "operationAmount" in transaction:
+
+            if "currency" not in transaction["operationAmount"]:
+                raise ValueError("В словаре отсутствует ключ 'currency")
+
+            if "code" not in transaction["operationAmount"]["currency"]:
+                raise ValueError("В словаре отсутствует ключ 'code")
+
+            if transaction["operationAmount"]["currency"]["code"] == currency:
+                yield transaction
+
+        elif "currency_code" in transaction:
+
+            if transaction["currency_code"] == currency:
+                yield transaction
+
+        else:
             raise ValueError("В словаре отсутствует ключ 'operationAmount'")
-
-        if "currency" not in transaction["operationAmount"]:
-            raise ValueError("В словаре отсутствует ключ 'currency")
-
-        if "code" not in transaction["operationAmount"]["currency"]:
-            raise ValueError("В словаре отсутствует ключ 'code")
-
-        if transaction["operationAmount"]["currency"]["code"] == currency:
-            yield transaction
 
 
 def transaction_descriptions(transactions: List[Dict[str, Any]]) -> Generator[Any | None, Any, None]:
